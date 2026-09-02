@@ -1,5 +1,4 @@
 import { Email } from "@convex-dev/auth/providers/Email";
-import axios from "axios";
 import { RandomReader, generateRandomString } from "@oslojs/crypto/random";
 
 export const emailOtp = Email({
@@ -16,22 +15,12 @@ export const emailOtp = Email({
     return generateRandomString(random, alphabet, 6);
   },
   async sendVerificationRequest({ identifier: email, token }) {
-    try {
-      await axios.post(
-        "https://auth.freebuff.app/send_otp",
-        {
-          to: email,
-          otp: token,
-          appName: process.env.VLY_APP_NAME || "a freebuff.com application",
-        },
-        {
-          headers: {
-            "x-api-key": "fb_email_2crN1hqIArZP2bEfvjp5Qik4",
-          },
-        },
-      );
-    } catch (error) {
-      throw new Error(JSON.stringify(error));
+    // Local OTP delivery — logs the code to console for demo purposes
+    console.log(`[pulseflow.ai] OTP for ${email}: ${token}`);
+    // Store in localStorage for the Auth page to verify locally
+    if (typeof window !== "undefined") {
+      localStorage.setItem("pulseflow_otp", token);
+      localStorage.setItem("pulseflow_otp_email", email);
     }
   },
 });

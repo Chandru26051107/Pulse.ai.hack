@@ -5,11 +5,17 @@ import {
   TrendingUp,
   Clock,
   Lightbulb,
-  Zap,
   ArrowRight,
   ChevronRight,
   BarChart3,
   GitBranch,
+  Shield,
+  Database,
+  Cpu,
+  Bell,
+  Users,
+  Bed,
+  Stethoscope,
 } from "lucide-react";
 
 export default function Landing() {
@@ -29,10 +35,10 @@ export default function Landing() {
             </span>
           </div>
           <button
-            onClick={() => navigate("/dashboard")}
+            onClick={() => navigate("/auth")}
             className="px-4 py-2 text-sm rounded-lg bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity cursor-pointer"
           >
-            Open Dashboard
+            Sign In
           </button>
         </div>
       </nav>
@@ -45,6 +51,11 @@ export default function Landing() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-xs text-primary mb-8">
+              <Shield className="w-3 h-3" />
+              Internal Operations Platform
+            </div>
+
             <h1 className="text-5xl md:text-6xl font-[family-name:var(--font-playfair)] font-bold leading-tight tracking-tight">
               Predict. Explain.
               <br />
@@ -60,14 +71,14 @@ export default function Landing() {
 
             <div className="mt-10 flex items-center justify-center gap-4">
               <button
-                onClick={() => navigate("/dashboard")}
+                onClick={() => navigate("/auth")}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity cursor-pointer"
               >
                 Open Dashboard
                 <ArrowRight className="w-4 h-4" />
               </button>
               <a
-                href="#how-it-works"
+                href="#about"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-border text-foreground font-medium hover:bg-accent/5 transition-colors no-underline"
               >
                 Learn More
@@ -77,7 +88,33 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Core Loop */}
+      {/* Key Metrics Strip */}
+      <section className="py-8 px-6 border-y border-border bg-card/50">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid grid-cols-4 gap-6 text-center">
+            {[
+              { icon: Bed, value: "Up to 10,000", label: "Bed capacity modeled" },
+              { icon: Users, value: "Up to 8,000", label: "Staff positions tracked" },
+              { icon: Clock, value: "30–180 min", label: "Prediction horizon" },
+              { icon: Stethoscope, value: "5 Risk Levels", label: "From LOW to CRITICAL" },
+            ].map((item, i) => (
+              <motion.div
+                key={item.label}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <item.icon className="w-5 h-5 text-accent mx-auto mb-2" />
+                <p className="text-lg font-bold">{item.value}</p>
+                <p className="text-xs text-muted-foreground">{item.label}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
       <section className="py-16 px-6 bg-card border-y border-border vintage-texture">
         <div className="max-w-5xl mx-auto">
           <motion.div
@@ -99,13 +136,13 @@ export default function Landing() {
               {
                 icon: Activity,
                 title: "Monitor",
-                desc: "Operational metrics — arrivals, bed occupancy, staffing levels, and wait times — are ingested and analyzed continuously.",
+                desc: "Operational metrics — arrivals, bed occupancy, staffing levels, and wait times — are ingested and analyzed continuously across all departments.",
                 step: "01",
               },
               {
                 icon: TrendingUp,
                 title: "Predict",
-                desc: "Machine learning models forecast overcrowding risk at 30 to 180-minute horizons, with confidence scores and lead-time estimates.",
+                desc: "Machine learning models forecast overcrowding risk at 30 to 180-minute horizons, with confidence scores and lead-time estimates for each prediction.",
                 step: "02",
               },
               {
@@ -143,8 +180,8 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Features */}
-      <section id="how-it-works" className="py-20 px-6">
+      {/* About / System Details */}
+      <section id="about" className="py-20 px-6">
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -153,44 +190,49 @@ export default function Landing() {
             className="text-center mb-14"
           >
             <h2 className="text-3xl font-[family-name:var(--font-playfair)] font-bold">
-              Capabilities
+              About the System
             </h2>
-            <p className="text-sm text-muted-foreground mt-3">
-              Built for operations teams who need to see what is coming
+            <p className="text-sm text-muted-foreground mt-3 max-w-2xl mx-auto">
+              pulseflow.ai is an internal decision-support platform designed
+              for hospital operations teams. It combines real-time monitoring
+              with predictive analytics to help staff anticipate and respond
+              to emergency department overcrowding before it impacts patient
+              care.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 gap-6">
+          {/* Architecture overview */}
+          <div className="grid grid-cols-2 gap-6 mb-12">
             {[
               {
-                icon: TrendingUp,
-                title: "Multi-Horizon Forecasting",
-                desc: "Risk projections at 30, 60, 90, 120, and 180-minute horizons, with the earliest warning threshold flagged automatically.",
+                icon: Database,
+                title: "Data Ingestion",
+                desc: "Arrival volumes, bed occupancy rates, staffing levels, patient wait times, admission and discharge flows, and ambulance dispatch data are collected and processed in real time.",
               },
               {
-                icon: Lightbulb,
-                title: "Explainable Predictions",
-                desc: "Top contributing factors ranked by importance, with directional context and plain-language summaries — no black box.",
-              },
-              {
-                icon: GitBranch,
-                title: "Scenario Simulator",
-                desc: "Model the impact of adding beds, calling in staff, or managing surges — see projected risk change before committing resources.",
+                icon: Cpu,
+                title: "Prediction Engine",
+                desc: "A Random Forest classifier trained on historical patterns evaluates 15 engineered features to produce overcrowding probability scores across multiple time horizons.",
               },
               {
                 icon: BarChart3,
                 title: "Risk Analysis",
-                desc: "Visual breakdown of which operational variables are most influential, with drill-down into model reasoning and factor weights.",
+                desc: "Each prediction is decomposed into contributing factors — arrival rate, bed pressure, staff availability — so operators understand why risk is elevated, not just that it is.",
               },
               {
-                icon: Activity,
-                title: "Operational Recommendations",
-                desc: "Actionable suggestions tied to current conditions — staffing adjustments, bed management, discharge workflow optimization.",
+                icon: GitBranch,
+                title: "Scenario Simulation",
+                desc: "Before committing resources, teams can model the projected impact of adding beds, adjusting staffing, or managing surge conditions through the interactive simulator.",
               },
               {
-                icon: Clock,
-                title: "Live Simulation",
-                desc: "Deterministic scenarios that walk through escalating conditions and intervention outcomes — repeatable and consistent.",
+                icon: Bell,
+                title: "Early Warning",
+                desc: "When risk crosses configured thresholds, the system surfaces alerts with lead times, allowing operations to prepare interventions 30 to 180 minutes before overcrowding occurs.",
+              },
+              {
+                icon: Lightbulb,
+                title: "Operational Guidance",
+                desc: "Rule-based recommendations — bed preparation, staffing adjustments, discharge workflow reviews — are generated from current conditions to support decision-making.",
               },
             ].map((item, i) => (
               <motion.div
@@ -213,6 +255,39 @@ export default function Landing() {
               </motion.div>
             ))}
           </div>
+
+          {/* Tech details */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="vintage-card rounded-xl p-8 bg-card"
+          >
+            <h3 className="text-lg font-[family-name:var(--font-playfair)] font-bold mb-4">
+              Technical Details
+            </h3>
+            <div className="grid grid-cols-3 gap-6 text-sm text-muted-foreground">
+              <div className="space-y-2">
+                <p><strong className="text-foreground">Model:</strong> Random Forest (200 trees, max depth 12)</p>
+                <p><strong className="text-foreground">Baseline:</strong> Logistic Regression for comparison</p>
+                <p><strong className="text-foreground">Features:</strong> 15 engineered operational metrics</p>
+              </div>
+              <div className="space-y-2">
+                <p><strong className="text-foreground">Horizons:</strong> 30, 60, 90, 120, 180 minutes</p>
+                <p><strong className="text-foreground">Risk Bands:</strong> LOW, MODERATE, HIGH, CRITICAL</p>
+                <p><strong className="text-foreground">Explainability:</strong> Feature importance ranking</p>
+              </div>
+              <div className="space-y-2">
+                <p><strong className="text-foreground">Data:</strong> Synthetic hospital operations data</p>
+                <p><strong className="text-foreground">Scale:</strong> 2,000–10,000 beds modeled</p>
+                <p><strong className="text-foreground">Response:</strong> Real-time dashboard updates</p>
+              </div>
+            </div>
+            <p className="text-[10px] text-muted-foreground/60 mt-4">
+              Predictions are model-derived estimates. Operational decisions should
+              be verified with clinical and administrative staff before implementation.
+            </p>
+          </motion.div>
         </div>
       </section>
 
@@ -232,7 +307,7 @@ export default function Landing() {
               workflow — available now for your team.
             </p>
             <button
-              onClick={() => navigate("/dashboard")}
+              onClick={() => navigate("/auth")}
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-primary text-primary-foreground font-medium text-lg hover:opacity-90 transition-opacity cursor-pointer"
             >
               Open Dashboard
@@ -243,18 +318,24 @@ export default function Landing() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-6">
+      <footer className="py-10 px-6">
         <div className="max-w-5xl mx-auto">
-          <div className="vintage-divider mb-6" />
-          <div className="flex items-center justify-between">
+          <div className="vintage-divider mb-8" />
+          <div className="flex flex-col items-center gap-4">
             <div className="flex items-center gap-2">
-              <Activity className="w-4 h-4 text-muted-foreground" />
-              <span className="font-bold text-sm">pulseflow.ai</span>
+              <Activity className="w-5 h-5 text-muted-foreground" />
+              <span className="font-[family-name:var(--font-playfair)] font-bold text-base">
+                pulseflow.ai
+              </span>
             </div>
-            <p className="text-[10px] text-muted-foreground/60 max-w-md text-right">
-              Internal operational tool. Predictions are model-derived estimates
-              and should be verified with clinical and administrative staff
-              before informing decisions.
+            <p className="text-sm text-muted-foreground text-center max-w-lg">
+              An internal capacity intelligence platform for hospital operations teams.
+              Predictions are model-derived estimates and should be verified with
+              clinical and administrative staff before informing decisions.
+            </p>
+            <div className="vintage-divider w-32 my-2" />
+            <p className="text-xs text-muted-foreground/60">
+              &copy; {new Date().getFullYear()} pulseflow.ai. All rights reserved.
             </p>
           </div>
         </div>

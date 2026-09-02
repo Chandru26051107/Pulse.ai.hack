@@ -106,8 +106,8 @@ export default function WhatIf() {
               <SliderControl
                 label="Additional Beds"
                 value={input.additionalBeds}
-                min={-10}
-                max={20}
+                min={-2000}
+                max={2000}
                 onChange={(v) => updateInput("additionalBeds", v)}
                 unit=" beds"
               />
@@ -116,8 +116,8 @@ export default function WhatIf() {
               <SliderControl
                 label="Additional Staff"
                 value={input.additionalStaff}
-                min={-8}
-                max={10}
+                min={-1500}
+                max={1500}
                 onChange={(v) => updateInput("additionalStaff", v)}
                 unit=" staff"
               />

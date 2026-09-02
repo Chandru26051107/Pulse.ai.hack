@@ -8,7 +8,11 @@ import {
   Clock,
   Shield,
   Activity,
+  LogOut,
+  Beaker,
 } from "lucide-react";
+import { useNavigate } from "react-router";
+import { useAuth } from "@/hooks/use-auth";
 import {
   getRiskLevel,
   getRiskColor,
@@ -19,14 +23,23 @@ import { usePrediction } from "@/hooks/usePulseFlow";
 const NAV_ITEMS = [
   { label: "Overview", path: "/dashboard", icon: LayoutDashboard },
   { label: "Forecast", path: "/dashboard/forecast", icon: TrendingUp },
-  { label: "Why Risk?", path: "/dashboard/explain", icon: Lightbulb },
-  { label: "What-if", path: "/dashboard/whatif", icon: GitBranch },
+  { label: "Risk Analysis", path: "/dashboard/explain", icon: Lightbulb },
+  { label: "Scenario Simulator", path: "/dashboard/whatif", icon: GitBranch },
   { label: "History", path: "/dashboard/history", icon: Clock },
+  { label: "Live Simulation", path: "/dashboard/demo", icon: Beaker },
 ];
 
 export function Sidebar() {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { signOut } = useAuth();
   const prediction = usePrediction();
+
+  const handleSignOut = async () => {
+    localStorage.removeItem("pulseflow_session");
+    try { await signOut(); } catch { /* continue */ }
+    navigate("/");
+  };
 
   return (
     <aside className="w-64 h-screen bg-sidebar text-sidebar-foreground flex flex-col border-r border-sidebar-border">
@@ -107,6 +120,17 @@ export function Sidebar() {
           );
         })}
       </nav>
+
+      {/* Logout */}
+      <div className="px-3 pb-2">
+        <button
+          onClick={handleSignOut}
+          className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-sidebar-foreground/60 hover:text-sidebar-foreground/90 hover:bg-sidebar-accent/30 transition-colors w-full cursor-pointer"
+        >
+          <LogOut className="w-4 h-4 shrink-0" />
+          <span>Sign Out</span>
+        </button>
+      </div>
 
       {/* Disclaimer */}
       <div className="p-4 border-t border-sidebar-border">

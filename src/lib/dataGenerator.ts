@@ -43,8 +43,8 @@ export interface GenerationConfig {
 export const DEFAULT_CONFIG: GenerationConfig = {
   startDate: "2026-03-01",
   days: 90,
-  totalBeds: 30,
-  totalStaff: 24,
+  totalBeds: 8500,
+  totalStaff: 6200,
 };
 
 export function generateHospitalData(
@@ -55,9 +55,11 @@ export function generateHospitalData(
   const totalHours = config.days * 24;
 
   // Running state
-  let currentPatients = 15;
+  let currentPatients = Math.round(config.totalBeds * 0.65);
   let currentBeds = config.totalBeds;
-  let currentStaff = 16;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  let _totalBeds = config.totalBeds;
+  let currentStaff = Math.round(config.totalStaff * 0.65);
   let arrivalBuffer: number[] = [];
   let lastAdmissions = 0;
   let lastDischarges = 0;
@@ -144,7 +146,7 @@ export function generateHospitalData(
     // Available beds
     const availableBeds = Math.max(0, currentBeds - occupiedBeds);
 
-    // Staffing — shifts
+    // Staffing — shifts (proportional to total staff)
     let baseStaff: number;
     if (hourOfDay >= 7 && hourOfDay < 15) {
       baseStaff = Math.round(config.totalStaff * 0.4); // Day shift
@@ -159,7 +161,7 @@ export function generateHospitalData(
       baseStaff = Math.round(baseStaff * 0.7);
     }
 
-    currentStaff = clamp(baseStaff, 4, config.totalStaff);
+    currentStaff = clamp(baseStaff, Math.round(config.totalStaff * 0.15), config.totalStaff);
     const staffRatio = parseFloat((currentStaff / Math.max(currentPatients, 1)).toFixed(2));
 
     // Waiting time — rises with demand, falls with staff
@@ -214,18 +216,20 @@ export function generateCurrentState(): HospitalMetrics {
   const now = new Date();
   const hourOfDay = now.getHours();
 
-  // Use realistic mid-range values
-  const arrivals = HOURLY_ARRIVAL_BASE[hourOfDay] || 5;
-  const currentPatients = clamp(Math.round(arrivals * 3.5 + randomBetween(-5, 5)), 10, 28);
-  const totalBeds = 30;
+  const totalBeds = 8500;
+  const totalStaff = 6200;
+
+  // Use realistic mid-range values proportional to hospital size
+  const arrivals = Math.round((HOURLY_ARRIVAL_BASE[hourOfDay] || 5) * (totalBeds / 30));
+  const currentPatients = clamp(Math.round(totalBeds * 0.65 + randomBetween(-200, 200)), Math.round(totalBeds * 0.4), Math.round(totalBeds * 0.95));
   const occupiedBeds = Math.min(currentPatients, totalBeds);
   const availableBeds = Math.max(0, totalBeds - occupiedBeds);
   const bedOccupancyPercent = Math.round((occupiedBeds / totalBeds) * 100);
 
   let currentStaff: number;
-  if (hourOfDay >= 7 && hourOfDay < 15) currentStaff = 16;
-  else if (hourOfDay >= 15 && hourOfDay < 23) currentStaff = 14;
-  else currentStaff = 8;
+  if (hourOfDay >= 7 && hourOfDay < 15) currentStaff = Math.round(totalStaff * 0.4);
+  else if (hourOfDay >= 15 && hourOfDay < 23) currentStaff = Math.round(totalStaff * 0.35);
+  else currentStaff = Math.round(totalStaff * 0.25);
 
   const staffRatio = parseFloat((currentStaff / Math.max(currentPatients, 1)).toFixed(2));
   const waitTime = clamp(Math.round(12 + (bedOccupancyPercent > 80 ? 20 : 0) + (rand() * 10 - 5)), 3, 90);
@@ -243,7 +247,7 @@ export function generateCurrentState(): HospitalMetrics {
     totalEDBeds: totalBeds,
     bedOccupancyPercent,
     availableStaff: currentStaff,
-    totalStaff: 24,
+    totalStaff: totalStaff,
     staffRatio,
     averageWaitingTime: waitTime,
     admissionsLast1Hr: Math.round(currentPatients * 0.08),

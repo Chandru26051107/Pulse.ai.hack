@@ -168,8 +168,8 @@ export const WHAT_IF_PRESETS: Record<
   },
   recovery: {
     label: "Recovery",
-    description: "Adding 5 beds and 3 staff to reduce pressure",
-    input: { additionalBeds: 5, additionalStaff: 3, arrivalChangePercent: -15, dischargeChangePercent: 20 },
+    description: "Adding beds and staff to reduce pressure",
+    input: { additionalBeds: 500, additionalStaff: 400, arrivalChangePercent: -15, dischargeChangePercent: 20 },
   },
 };
 
