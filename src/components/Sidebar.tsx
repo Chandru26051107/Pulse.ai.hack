@@ -10,6 +10,7 @@ import {
   Activity,
   LogOut,
   Beaker,
+  CalendarDays,
 } from "lucide-react";
 import { useNavigate } from "react-router";
 import { useAuth } from "@/hooks/use-auth";
@@ -23,6 +24,7 @@ import { usePrediction } from "@/hooks/usePulseFlow";
 const NAV_ITEMS = [
   { label: "Overview", path: "/dashboard", icon: LayoutDashboard },
   { label: "Forecast", path: "/dashboard/forecast", icon: TrendingUp },
+  { label: "7-Day Outlook", path: "/dashboard/outlook", icon: CalendarDays },
   { label: "Risk Analysis", path: "/dashboard/explain", icon: Lightbulb },
   { label: "Scenario Simulator", path: "/dashboard/whatif", icon: GitBranch },
   { label: "History", path: "/dashboard/history", icon: Clock },

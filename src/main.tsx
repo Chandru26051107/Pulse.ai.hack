@@ -18,6 +18,7 @@ const Explain = lazy(() => import("./pages/Explain.tsx"));
 const WhatIf = lazy(() => import("./pages/WhatIf.tsx"));
 const History = lazy(() => import("./pages/History.tsx"));
 const Demo = lazy(() => import("./pages/Demo.tsx"));
+const Prediction7Day = lazy(() => import("./pages/Prediction7Day.tsx"));
 
 // Simple loading fallback for route transitions
 function RouteLoading() {
@@ -93,6 +94,7 @@ createRoot(document.getElementById("root")!).render(
               >
                 <Route index element={<Overview />} />
                 <Route path="forecast" element={<Forecast />} />
+                <Route path="outlook" element={<Prediction7Day />} />
                 <Route path="explain" element={<Explain />} />
                 <Route path="whatif" element={<WhatIf />} />
                 <Route path="history" element={<History />} />
