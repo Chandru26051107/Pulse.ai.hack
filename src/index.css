@@ -1,0 +1,208 @@
+/* DO NOT CHANGE */
+@import "tailwindcss";
+@import "tw-animate-css";
+@custom-variant dark (&:is(.dark *));
+
+/* DO NOT CHANGE */
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* Vintage Clinical Theme — aged paper + deep ink + teal accent */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/playfairdisplay/v37/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvXDXbtM.woff2) format('woff2');
+}
+
+:root {
+  --radius: 0.5rem;
+  /* Vintage palette: aged parchment base, deep ink foreground */
+  --background: #f5f0e8;
+  --foreground: #2c2416;
+  --card: #faf6ef;
+  --card-foreground: #2c2416;
+  --popover: #faf6ef;
+  --popover-foreground: #2c2416;
+  --primary: #3d5a3e;
+  --primary-foreground: #faf6ef;
+  --secondary: #e8e0d0;
+  --secondary-foreground: #3d3225;
+  --muted: #ece5d8;
+  --muted-foreground: #6b5e4c;
+  --accent: #1a6b5a;
+  --accent-foreground: #faf6ef;
+  --destructive: #8b3a3a;
+  --border: #d4c9b8;
+  --input: #d4c9b8;
+  --ring: #3d5a3e;
+  /* Risk semantic colors */
+  --risk-low: #3d5a3e;
+  --risk-moderate: #b8860b;
+  --risk-high: #c45d2a;
+  --risk-critical: #8b3a3a;
+  /* Chart palette — muted vintage tones */
+  --chart-1: #3d5a3e;
+  --chart-2: #1a6b5a;
+  --chart-3: #b8860b;
+  --chart-4: #c45d2a;
+  --chart-5: #6b4226;
+  --sidebar: #2c2416;
+  --sidebar-foreground: #e8e0d0;
+  --sidebar-primary: #a8c5a0;
+  --sidebar-primary-foreground: #2c2416;
+  --sidebar-accent: #3d3225;
+  --sidebar-accent-foreground: #e8e0d0;
+  --sidebar-border: #3d3225;
+  --sidebar-ring: #a8c5a0;
+}
+
+/* Vintage dark variant — deep ink night mode */
+.dark {
+  --background: #1e1a14;
+  --foreground: #e8e0d0;
+  --card: #2c2416;
+  --card-foreground: #e8e0d0;
+  --popover: #2c2416;
+  --popover-foreground: #e8e0d0;
+  --primary: #a8c5a0;
+  --primary-foreground: #1e1a14;
+  --secondary: #3d3225;
+  --secondary-foreground: #e8e0d0;
+  --muted: #3d3225;
+  --muted-foreground: #a09480;
+  --accent: #5ab89e;
+  --accent-foreground: #1e1a14;
+  --destructive: #d46a6a;
+  --border: #3d3225;
+  --input: #3d3225;
+  --ring: #a8c5a0;
+  --chart-1: #a8c5a0;
+  --chart-2: #5ab89e;
+  --chart-3: #d4a840;
+  --chart-4: #d46a4a;
+  --chart-5: #b87a50;
+  --sidebar: #1e1a14;
+  --sidebar-foreground: #e8e0d0;
+  --sidebar-primary: #a8c5a0;
+  --sidebar-primary-foreground: #1e1a14;
+  --sidebar-accent: #3d3225;
+  --sidebar-accent-foreground: #e8e0d0;
+  --sidebar-border: #3d3225;
+  --sidebar-ring: #a8c5a0;
+}
+
+/* Vintage texture overlay */
+.vintage-texture {
+  position: relative;
+}
+.vintage-texture::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  border-radius: inherit;
+}
+.vintage-texture > * {
+  position: relative;
+  z-index: 1;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', 'Georgia', serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  button:not([disabled]),
+  [role="button"]:not([disabled]) {
+    cursor: pointer;
+  }
+  h1, h2, h3 {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* Risk color utility classes */
+.risk-low { color: var(--risk-low); }
+.risk-moderate { color: var(--risk-moderate); }
+.risk-high { color: var(--risk-high); }
+.risk-critical { color: var(--risk-critical); }
+
+.bg-risk-low { background-color: var(--risk-low); }
+.bg-risk-moderate { background-color: var(--risk-moderate); }
+.bg-risk-high { background-color: var(--risk-high); }
+.bg-risk-critical { background-color: var(--risk-critical); }
+
+.border-risk-low { border-color: var(--risk-low); }
+.border-risk-moderate { border-color: var(--risk-moderate); }
+.border-risk-high { border-color: var(--risk-high); }
+.border-risk-critical { border-color: var(--risk-critical); }
+
+/* Smooth number transitions */
+.metric-value {
+  transition: all 0.4s ease;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Vintage divider */
+.vintage-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border), transparent);
+}
+
+/* Subtle distressing effect on cards */
+.vintage-card {
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.vintage-card::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: radial-gradient(ellipse at 20% 50%, rgba(139,115,85,0.03), transparent 70%);
+  pointer-events: none;
+}
