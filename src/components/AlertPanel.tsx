@@ -40,7 +40,7 @@ export function AlertPanel() {
             riskLevel: prediction.riskLevel,
             probability: prediction.probability,
             leadTimeMinutes: prediction.leadTimeMinutes,
-            message: `Overcrowding risk crossed to ${prediction.riskLevel} — ${Math.round(prediction.probability * 100)}% probability. Potential overcrowding detected approximately ${prediction.leadTimeMinutes} minutes ahead.`,
+            message: `Risk level escalated to ${prediction.riskLevel} — ${Math.round(prediction.probability * 100)}% probability. Overcrowding projected approximately ${prediction.leadTimeMinutes} minutes ahead.`,
             dismissed: false,
           },
           ...prev,
@@ -86,7 +86,7 @@ export function AlertPanel() {
                   className="text-xs font-semibold"
                   style={{ color: getRiskColor(alert.riskLevel) }}
                 >
-                  {alert.riskLevel} ALERT
+                  {alert.riskLevel}
                 </span>
                 <span className="text-[10px] text-muted-foreground flex items-center gap-1">
                   <Clock className="w-2.5 h-2.5" />

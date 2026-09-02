@@ -44,10 +44,10 @@ export default function Explain() {
         animate={{ opacity: 1, y: 0 }}
       >
         <h1 className="text-2xl font-bold font-[family-name:var(--font-playfair)]">
-          Why Is This Happening?
+          Risk Analysis
         </h1>
         <p className="text-sm text-muted-foreground mt-1">
-          Understanding the model-derived factors behind current risk levels
+          Contributing factors and model reasoning behind current risk levels
         </p>
       </motion.div>
 
@@ -85,7 +85,7 @@ export default function Explain() {
                 </CardTitle>
               </div>
               <p className="text-xs text-muted-foreground">
-                Relative importance of factors driving current prediction
+                Relative weight of factors driving the current prediction
               </p>
             </CardHeader>
             <CardContent>
@@ -191,12 +191,11 @@ export default function Explain() {
           </CardHeader>
           <CardContent>
             <div className="flex items-center justify-between gap-2">
-              {[
-                { icon: Database, label: "Hospital Data", desc: "Arrivals, beds, staff, wait times" },
-                { icon: Cpu, label: "Feature Engineering", desc: "15 engineered features" },
-                { icon: BarChart3, label: "ML Model", desc: "Random Forest classifier" },
-                { icon: Target, label: "Risk Probability", desc: "0–100% overcrowding risk" },
-                { icon: Lightbulb, label: "Explanation", desc: "Top contributing factors" },
+              {[                    { icon: Database, label: "Data Ingestion", desc: "Arrivals, beds, staff, wait times" },
+                    { icon: Cpu, label: "Feature Engineering", desc: "15 derived metrics" },
+                    { icon: BarChart3, label: "Model Inference", desc: "Random Forest classifier" },
+                    { icon: Target, label: "Risk Score", desc: "0–100% overcrowding probability" },
+                    { icon: Lightbulb, label: "Explanation", desc: "Top contributing factors" },
               ].map((step, i) => (
                 <div key={step.label} className="flex items-center gap-2 flex-1">
                   <div className="flex flex-col items-center text-center flex-1">
@@ -278,8 +277,8 @@ export default function Explain() {
                     </div>
                   </div>
                   <p className="text-[10px] text-muted-foreground/60 mt-4">
-                    Note: This is a model-derived analysis. Contributing factors represent statistical
-                    associations in the training data, not medically validated causal relationships.
+                    Note: Contributing factors represent statistical associations identified by the model,
+                    not clinically validated causal relationships.
                   </p>
                 </CardContent>
               </motion.div>

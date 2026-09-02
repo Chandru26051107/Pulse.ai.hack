@@ -84,7 +84,7 @@ export default function History() {
           History & Analytics
         </h1>
         <p className="text-sm text-muted-foreground mt-1">
-          Historical risk trends and operational performance metrics
+          Historical trends and operational performance across monitored periods
         </p>
       </motion.div>
 
@@ -192,7 +192,7 @@ export default function History() {
               </CardTitle>
             </div>
             <p className="text-xs text-muted-foreground">
-              Historical overcrowding probability over time
+              Overcrowding probability over the monitoring window
             </p>
           </CardHeader>
           <CardContent>

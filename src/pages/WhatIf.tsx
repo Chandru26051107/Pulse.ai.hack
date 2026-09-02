@@ -58,10 +58,10 @@ export default function WhatIf() {
         animate={{ opacity: 1, y: 0 }}
       >
         <h1 className="text-2xl font-bold font-[family-name:var(--font-playfair)]">
-          What-if Simulator
+          Scenario Simulator
         </h1>
         <p className="text-sm text-muted-foreground mt-1">
-          Test hypothetical interventions and see how they affect predicted risk
+          Model the impact of operational changes on predicted overcrowding risk
         </p>
       </motion.div>
 
@@ -97,10 +97,9 @@ export default function WhatIf() {
                 <CardTitle className="text-sm font-[family-name:var(--font-playfair)]">
                   Intervention Controls
                 </CardTitle>
-              </div>
-              <p className="text-xs text-muted-foreground">
-                Adjust parameters to simulate operational changes
-              </p>
+              </div>                <p className="text-xs text-muted-foreground">
+                  Modify variables and run the model to estimate impact
+                </p>
             </CardHeader>
             <CardContent className="space-y-5">
               {/* Additional Beds */}
@@ -254,7 +253,7 @@ export default function WhatIf() {
                 <CardContent className="pt-4">
                   <p className="text-xs text-muted-foreground">{result.details}</p>
                   <p className="text-[10px] text-muted-foreground/60 mt-2">
-                    Simulation — model estimate. Results are approximate and based on synthetic data patterns.
+                    Simulation — model estimate. Results reflect projected conditions based on current data patterns.
                   </p>
                 </CardContent>
               </Card>
@@ -264,10 +263,10 @@ export default function WhatIf() {
               <CardContent className="pt-5 flex flex-col items-center justify-center text-center h-64">
                 <GitBranch className="w-8 h-8 text-muted-foreground/30 mb-3" />
                 <p className="text-sm text-muted-foreground">
-                  Adjust the controls or select a scenario preset to see the impact
+                  Configure the controls or select a scenario preset to run a simulation
                 </p>
                 <p className="text-xs text-muted-foreground/60 mt-2">
-                  The simulator will show before/after risk comparison
+                  Results will appear here as a before-and-after comparison
                 </p>
               </CardContent>
             </Card>

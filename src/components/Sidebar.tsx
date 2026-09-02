@@ -37,11 +37,11 @@ export function Sidebar() {
             <Activity className="w-5 h-5 text-sidebar-primary" />
           </div>
           <div>
-            <h1 className="text-sm font-bold tracking-wide font-[family-name:var(--font-playfair)]">
-              PulseFlow AI
+            <h1 className="text-sm font-bold tracking-wide">
+              pulseflow.ai
             </h1>
             <p className="text-[10px] text-sidebar-foreground/50 tracking-widest uppercase">
-              ED Capacity Intelligence
+              Capacity Intelligence
             </p>
           </div>
         </div>
@@ -111,14 +111,14 @@ export function Sidebar() {
       {/* Disclaimer */}
       <div className="p-4 border-t border-sidebar-border">
         <p className="text-[9px] leading-relaxed text-sidebar-foreground/35">
-          Prototype demonstration using synthetic hospital operations data.
-          Predictions are not clinically validated and should not be used as a
-          substitute for professional medical or operational judgment.
+          Operational decisions should be verified with clinical and
+          administrative staff. Predictions are model-derived estimates,
+          not definitive guidance.
         </p>
         <div className="flex items-center gap-1.5 mt-3">
           <Shield className="w-3 h-3 text-sidebar-foreground/30" />
           <span className="text-[9px] text-sidebar-foreground/30">
-            Synthetic Data Only — No PII
+            No real patient data
           </span>
         </div>
       </div>

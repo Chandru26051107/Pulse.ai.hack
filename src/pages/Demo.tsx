@@ -38,7 +38,7 @@ const SCENARIOS = [
   {
     key: "emergency_surge",
     label: "Emergency Surge",
-    desc: "Sudden mass-casualty event",
+    desc: "Sudden influx from a major incident",
     emoji: "🔴",
   },
   {
@@ -88,10 +88,10 @@ export default function Demo() {
         animate={{ opacity: 1, y: 0 }}
       >
         <h1 className="text-2xl font-bold font-[family-name:var(--font-playfair)]">
-          Live Demo Simulation
+          Live Simulation
         </h1>
         <p className="text-sm text-muted-foreground mt-1">
-          Deterministic 3-minute walkthrough for demonstration
+          Deterministic scenario walkthrough — same sequence every time
         </p>
       </motion.div>
 
@@ -104,7 +104,7 @@ export default function Demo() {
         <Card className="vintage-card bg-card">
           <CardHeader>
             <CardTitle className="text-sm font-[family-name:var(--font-playfair)]">
-              Demo Walkthrough Steps
+              Walkthrough Steps
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -260,7 +260,7 @@ export default function Demo() {
         className="text-center py-4"
       >
         <p className="text-lg font-[family-name:var(--font-playfair)] font-bold text-accent">
-          PulseFlow AI — Predict. Explain. Prepare.
+          pulseflow.ai — Predict. Explain. Prepare.
         </p>
       </motion.div>
     </div>

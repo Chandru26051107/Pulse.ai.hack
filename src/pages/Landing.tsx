@@ -2,13 +2,14 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router";
 import {
   Activity,
-  Shield,
   TrendingUp,
   Clock,
   Lightbulb,
   Zap,
   ArrowRight,
   ChevronRight,
+  BarChart3,
+  GitBranch,
 } from "lucide-react";
 
 export default function Landing() {
@@ -23,8 +24,8 @@ export default function Landing() {
             <div className="w-8 h-8 rounded-lg bg-primary/15 flex items-center justify-center">
               <Activity className="w-4.5 h-4.5 text-primary" />
             </div>
-            <span className="font-[family-name:var(--font-playfair)] font-bold text-lg">
-              PulseFlow AI
+            <span className="font-bold text-lg tracking-tight">
+              pulseflow.ai
             </span>
           </div>
           <button
@@ -44,11 +45,6 @@ export default function Landing() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-xs text-primary mb-8">
-              <Shield className="w-3 h-3" />
-              Emergency Department Early Warning System
-            </div>
-
             <h1 className="text-5xl md:text-6xl font-[family-name:var(--font-playfair)] font-bold leading-tight tracking-tight">
               Predict. Explain.
               <br />
@@ -56,10 +52,10 @@ export default function Landing() {
             </h1>
 
             <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              PulseFlow AI monitors emergency department capacity in real time,
-              predicts overcrowding before it happens, explains why, and helps
-              administrators test interventions — all before the waiting room
-              fills up.
+              An internal capacity intelligence platform that monitors
+              emergency department conditions in real time, forecasts
+              overcrowding before it occurs, and gives operations teams
+              the insight to act proactively.
             </p>
 
             <div className="mt-10 flex items-center justify-center gap-4">
@@ -67,7 +63,7 @@ export default function Landing() {
                 onClick={() => navigate("/dashboard")}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity cursor-pointer"
               >
-                Launch Dashboard
+                Open Dashboard
                 <ArrowRight className="w-4 h-4" />
               </button>
               <a
@@ -91,10 +87,10 @@ export default function Landing() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl font-[family-name:var(--font-playfair)] font-bold">
-              The Intelligence Loop
+              How It Works
             </h2>
             <p className="text-sm text-muted-foreground mt-3">
-              From data to decisions in three clear steps
+              From data to decision in three steps
             </p>
           </motion.div>
 
@@ -103,19 +99,19 @@ export default function Landing() {
               {
                 icon: Activity,
                 title: "Monitor",
-                desc: "Real-time hospital operational metrics — arrivals, beds, staffing, wait times — processed and analyzed continuously.",
+                desc: "Operational metrics — arrivals, bed occupancy, staffing levels, and wait times — are ingested and analyzed continuously.",
                 step: "01",
               },
               {
                 icon: TrendingUp,
                 title: "Predict",
-                desc: "AI models forecast overcrowding risk 30–180 minutes ahead, with confidence scores and clear lead times.",
+                desc: "Machine learning models forecast overcrowding risk at 30 to 180-minute horizons, with confidence scores and lead-time estimates.",
                 step: "02",
               },
               {
                 icon: Lightbulb,
                 title: "Prepare",
-                desc: "Understand why risk is rising, test hypothetical interventions in the simulator, and act before overcrowding occurs.",
+                desc: "Understand which factors are driving risk, test operational interventions in the scenario simulator, and act before conditions deteriorate.",
                 step: "03",
               },
             ].map((item, i) => (
@@ -160,7 +156,7 @@ export default function Landing() {
               Capabilities
             </h2>
             <p className="text-sm text-muted-foreground mt-3">
-              Built for hospital command centers
+              Built for operations teams who need to see what is coming
             </p>
           </motion.div>
 
@@ -169,32 +165,32 @@ export default function Landing() {
               {
                 icon: TrendingUp,
                 title: "Multi-Horizon Forecasting",
-                desc: "Risk predictions at 30, 60, 90, 120, and 180-minute horizons — with the earliest warning threshold clearly flagged.",
+                desc: "Risk projections at 30, 60, 90, 120, and 180-minute horizons, with the earliest warning threshold flagged automatically.",
               },
               {
                 icon: Lightbulb,
                 title: "Explainable Predictions",
-                desc: "Top contributing factors ranked by importance, with direction and plain-language summaries — no black box.",
+                desc: "Top contributing factors ranked by importance, with directional context and plain-language summaries — no black box.",
               },
               {
-                icon: Zap,
-                title: "What-if Simulation",
-                desc: "Test adding beds, calling in staff, or managing surges — see predicted risk change in real time.",
+                icon: GitBranch,
+                title: "Scenario Simulator",
+                desc: "Model the impact of adding beds, calling in staff, or managing surges — see projected risk change before committing resources.",
               },
               {
-                icon: Clock,
-                title: "Live Demo Mode",
-                desc: "Deterministic scenarios that walk through NORMAL → SURGE → CRITICAL → INTERVENTION — repeatable for demos.",
-              },
-              {
-                icon: Shield,
-                title: "Synthetic Data Only",
-                desc: "No real patient data, no PII. Every metric is generated from realistic hospital operational patterns.",
+                icon: BarChart3,
+                title: "Risk Analysis",
+                desc: "Visual breakdown of which operational variables are most influential, with drill-down into model reasoning and factor weights.",
               },
               {
                 icon: Activity,
                 title: "Operational Recommendations",
-                desc: "Rule-based suggestions tied to current conditions — staffing, bed management, discharge workflow.",
+                desc: "Actionable suggestions tied to current conditions — staffing adjustments, bed management, discharge workflow optimization.",
+              },
+              {
+                icon: Clock,
+                title: "Live Simulation",
+                desc: "Deterministic scenarios that walk through escalating conditions and intervention outcomes — repeatable and consistent.",
               },
             ].map((item, i) => (
               <motion.div
@@ -229,17 +225,17 @@ export default function Landing() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl font-[family-name:var(--font-playfair)] font-bold mb-4">
-              See the Prediction in Action
+              See the System in Action
             </h2>
             <p className="text-muted-foreground mb-8">
-              Experience the full monitoring → prediction → explanation →
-              intervention workflow. Interactive demo with synthetic data.
+              The full monitoring, prediction, explanation, and intervention
+              workflow — available now for your team.
             </p>
             <button
               onClick={() => navigate("/dashboard")}
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-primary text-primary-foreground font-medium text-lg hover:opacity-90 transition-opacity cursor-pointer"
             >
-              Launch PulseFlow AI
+              Open Dashboard
               <ChevronRight className="w-5 h-5" />
             </button>
           </motion.div>
@@ -253,14 +249,12 @@ export default function Landing() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Activity className="w-4 h-4 text-muted-foreground" />
-              <span className="font-[family-name:var(--font-playfair)] font-semibold text-sm">
-                PulseFlow AI
-              </span>
+              <span className="font-bold text-sm">pulseflow.ai</span>
             </div>
             <p className="text-[10px] text-muted-foreground/60 max-w-md text-right">
-              Prototype demonstration using synthetic hospital operations data.
-              Predictions are not clinically validated and should not be used as
-              a substitute for professional medical or operational judgment.
+              Internal operational tool. Predictions are model-derived estimates
+              and should be verified with clinical and administrative staff
+              before informing decisions.
             </p>
           </div>
         </div>

@@ -11,7 +11,7 @@ import { ContributingFactors } from "@/components/ContributingFactors";
 import { AlertPanel } from "@/components/AlertPanel";
 import { RecommendationPanel } from "@/components/RecommendationPanel";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Shield, TrendingUp, Lightbulb, Zap } from "lucide-react";
+import { TrendingUp, Lightbulb, Zap } from "lucide-react";
 
 export default function Overview() {
   const status = useCurrentStatus();
@@ -29,15 +29,11 @@ export default function Overview() {
       >
         <div>
           <h1 className="text-2xl font-bold font-[family-name:var(--font-playfair)]">
-            Emergency Department Overview
+            ED Overview
           </h1>
           <p className="text-sm text-muted-foreground mt-1">
-            Real-time overcrowding risk monitoring and early warning
+            Real-time capacity monitoring and overcrowding early warning
           </p>
-        </div>
-        <div className="flex items-center gap-2 text-[10px] text-muted-foreground bg-muted/50 px-3 py-1.5 rounded-lg">
-          <Shield className="w-3 h-3" />
-          <span>Synthetic data — not clinically validated</span>
         </div>
       </motion.div>
 
@@ -207,8 +203,7 @@ export default function Overview() {
               "{explanation.summary}"
             </p>
             <p className="text-[10px] text-muted-foreground/60 mt-2">
-              Model confidence: {Math.round(explanation.modelConfidence * 100)}% —
-              based on synthetic operational data patterns.
+              Model confidence: {Math.round(explanation.modelConfidence * 100)}%
             </p>
           </CardContent>
         </Card>

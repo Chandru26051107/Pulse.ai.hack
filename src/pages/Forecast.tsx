@@ -57,10 +57,10 @@ export default function Forecast() {
         animate={{ opacity: 1, y: 0 }}
       >
         <h1 className="text-2xl font-bold font-[family-name:var(--font-playfair)]">
-          Risk Forecast
+          Forecast
         </h1>
         <p className="text-sm text-muted-foreground mt-1">
-          Predicted overcrowding probability across upcoming time horizons
+          Overcrowding probability across upcoming time horizons
         </p>
       </motion.div>
 
@@ -80,7 +80,7 @@ export default function Forecast() {
               {prediction.riskLevel} — {Math.round(prediction.probability * 100)}%
             </p>
             <p className="text-sm text-muted-foreground">
-              Current risk level with {prediction.leadTimeMinutes}-minute lead time
+              Active risk level — {prediction.leadTimeMinutes}-minute lead time
             </p>
           </div>
         </div>
@@ -109,7 +109,7 @@ export default function Forecast() {
               </CardTitle>
             </div>
             <p className="text-xs text-muted-foreground">
-              Risk probability at 30, 60, 90, 120, and 180-minute horizons
+              Projected risk at 30, 60, 90, 120, and 180-minute horizons
             </p>
           </CardHeader>
           <CardContent>
