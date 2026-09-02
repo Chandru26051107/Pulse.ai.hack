@@ -70,7 +70,7 @@ export default function Explain() {
       </motion.div>
 
       {/* Contributing factors — horizontal bars */}
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -246,7 +246,7 @@ export default function Explain() {
                 className="overflow-hidden"
               >
                 <CardContent className="pt-0">
-                  <div className="grid grid-cols-2 gap-4 text-sm">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                     <div className="space-y-2">
                       <p className="text-muted-foreground">
                         <strong>Algorithm:</strong> Random Forest (200 trees, max depth 12)

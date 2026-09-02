@@ -83,7 +83,7 @@ export default function WhatIf() {
         ))}
       </motion.div>
 
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Controls */}
         <motion.div
           initial={{ opacity: 0, x: -10 }}
@@ -175,7 +175,7 @@ export default function WhatIf() {
           {result ? (
             <>
               {/* Before / After comparison */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Card className="vintage-card bg-card">
                   <CardContent className="pt-5">
                     <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-2">

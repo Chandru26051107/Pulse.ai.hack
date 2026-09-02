@@ -44,9 +44,9 @@ export default function Overview() {
       <MetricStrip metrics={status.data} />
 
       {/* Main content grid */}
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Risk card — spans 2 cols */}
-        <div className="col-span-2">
+        <div className="lg:col-span-2">
           <RiskCard prediction={prediction} />
         </div>
 
@@ -143,7 +143,7 @@ export default function Overview() {
       </div>
 
       {/* Contributing factors + Recommendations */}
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}

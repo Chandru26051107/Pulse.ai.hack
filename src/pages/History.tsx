@@ -89,7 +89,7 @@ export default function History() {
       </motion.div>
 
       {/* Summary cards */}
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {[
           {
             label: "Peak Occupancy",
@@ -236,7 +236,7 @@ export default function History() {
       </motion.div>
 
       {/* Secondary charts */}
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Wait time by hour */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}

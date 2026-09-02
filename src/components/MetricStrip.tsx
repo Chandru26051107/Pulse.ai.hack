@@ -61,7 +61,7 @@ export function MetricStrip({ metrics }: MetricStripProps) {
   const items = METRICS(metrics);
 
   return (
-    <div className="grid grid-cols-6 gap-3">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
       {items.map((item, i) => {
         const Icon = item.icon;
         const barPct = Math.min(100, (item.value / item.max) * 100);

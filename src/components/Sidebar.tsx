@@ -29,7 +29,7 @@ const NAV_ITEMS = [
   { label: "Live Simulation", path: "/dashboard/demo", icon: Beaker },
 ];
 
-export function Sidebar() {
+export function Sidebar({ onClose }: { onClose?: () => void } = {}) {
   const location = useLocation();
   const navigate = useNavigate();
   const { signOut } = useAuth();
@@ -39,6 +39,10 @@ export function Sidebar() {
     localStorage.removeItem("pulseflow_session");
     try { await signOut(); } catch { /* continue */ }
     navigate("/");
+  };
+
+  const handleNavClick = () => {
+    onClose?.();
   };
 
   return (
